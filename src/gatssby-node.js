@@ -120,9 +120,9 @@ export const sourceNodes = async (
               await forEach(product.variants.edges, async edge => {
                 const v = edge.node
                 if (v.metafields)
-                  await forEach(v.metafields.edges, async edge =>
+                  await forEach(v.metafields, async edge =>
                     createNode(
-                      await ProductVariantMetafieldNode(imageArgs)(edge.node)
+                      await ProductVariantMetafieldNode(imageArgs)(edge)
                     )
                   )
                 return createNode(
@@ -131,8 +131,8 @@ export const sourceNodes = async (
               })
 
             if (product.metafields)
-              await forEach(product.metafields.edges, async edge =>
-                createNode(await ProductMetafieldNode(imageArgs)(edge.node))
+              await forEach(product.metafields, async edge =>
+                createNode(await ProductMetafieldNode(imageArgs)(edge))
               )
 
             if (product.options)
