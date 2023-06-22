@@ -112,7 +112,7 @@ export const ProductNode = imageArgs =>
     }
 
     if (node.metafields) {
-      const metafields = node.metafields;
+      const metafields = node.metafields.filter(metafield => metafield);
 
       node.metafields___NODE = metafields.map(metafield =>
         generateNodeId(PRODUCT_METAFIELD, metafield.id)
@@ -150,7 +150,7 @@ export const ProductOptionNode = _imageArgs => createNodeFactory(PRODUCT_OPTION)
 export const ProductVariantNode = (imageArgs, productNode) =>
   createNodeFactory(PRODUCT_VARIANT, async node => {
     if (node.metafields) {
-      const metafields = node.metafields;
+      const metafields = node.metafields.filter(metafield => metafield);
 
       node.metafields___NODE = metafields.map(metafield =>
         generateNodeId(PRODUCT_VARIANT_METAFIELD, metafield.id)
