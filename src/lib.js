@@ -55,6 +55,6 @@ export const queryAll = async (
       aggregatedResponse
     )
   }
-  console.log(query, aggregatedResponse.length);
+
   return aggregatedResponse
 }
